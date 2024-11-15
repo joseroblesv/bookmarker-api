@@ -31,7 +31,7 @@ jobs:
       run: ./mvnw verify
 
     - if: ${{ github.ref == 'refs/head/master' }}
-    - name: Build and publish Docker image
+      name: Build and publish Docker image
       run: |
        ./mvnw clean package jib:dockerBuild -DskipTests
        docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
